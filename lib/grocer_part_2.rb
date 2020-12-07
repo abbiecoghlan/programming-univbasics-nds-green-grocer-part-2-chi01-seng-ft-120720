@@ -27,52 +27,7 @@ def apply_coupons(cart, coupons)
   end
 end 
    
-   
-    
 
-  if cart_item == coupons[count][:item]
-    
-    if coupons[count][:num] == cart_item[:count]
-      new_coupon_hash = {}
-      new_coupon_hash[:item] = "#{cart_item[:item]} W/COUPON"
-      new_coupon_hash[:price] = 
-    end
-  end 
-
-end 
- 
-  cart.each do |item_hash|
-    coupons.each do |coupon_item_hash|
-
-      if item_hash[:item] == coupon_item_hash[:item]
-      
-        if coupon_item_hash[:num] == item_hash[:count]
-          new_coupon_hash = {}
-          new_coupon_hash[:item] = "#{item_hash[:item]} W/COUPON"
-          new_coupon_hash[:price] = (coupon_item_hash[:cost].to_f / coupon_item_hash[:num].to_f)
-          new_coupon_hash[:clearance] = item_hash[:clearance]
-          new_coupon_hash[:count] = item_hash[:count]
-          item_hash[:count] = item_hash[:count] - new_coupon_hash[:count]
-          cart << new_coupon_hash
-        
-
-        elsif coupon_item_hash[:num] < item_hash[:count]
-          new_coupon_hash = {}
-          new_coupon_hash[:item] = "#{item_hash[:item]} W/COUPON"
-          new_coupon_hash[:price] = (coupon_item_hash[:cost].to_f / coupon_item_hash[:num].to_f)
-          new_coupon_hash[:count] = coupon_item_hash[:num]
-         
-          item_hash[:count] = item_hash[:count] - coupon_item_hash[:num]
-          cart << new_coupon_hash
-        end 
- 
-      end
-    end
-  end
-
-
-  
-end
 
 
 def apply_clearance(cart)
